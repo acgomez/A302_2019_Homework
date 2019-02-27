@@ -1,0 +1,9 @@
+select top 5
+    s.bestObjID, s.ra, s.dec, s.z
+from
+    specObj s
+join dbo.fGetNearbyObjEq(180,60,120) n on n.objID = s.bestObjID
+where
+    s.class = 'qso'
+order by
+    z desc
